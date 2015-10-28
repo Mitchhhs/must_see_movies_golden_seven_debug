@@ -1,13 +1,16 @@
 class DirectorsController < ApplicationController
   def index
-    directors = Director.all
+    @directors = Director.all
   end
 
   def show
     @director = Director.find(params[:id])
+    render("show_details.html")
   end
 
-  def new
+  def new_form
+
+    render("new_form.html")
   end
 
   def create_row
@@ -19,7 +22,7 @@ class DirectorsController < ApplicationController
 
     @director.save
 
-    render("show")
+    render("show_details")
   end
 
   def edit_form
